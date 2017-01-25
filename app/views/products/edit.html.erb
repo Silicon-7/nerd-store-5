@@ -23,7 +23,7 @@
           
           <div>
             <%= label_tag :description %>
-            <%= text_field_tag :description, @product.description %>
+            <%= text_area_tag :description, @product.description, size: "25x10" %>
           </div>
           
           <%= submit_tag "Update Product" %>
