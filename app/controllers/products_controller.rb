@@ -1,6 +1,19 @@
 class ProductsController < ApplicationController
   def index
     @products = Product.all
+    sort_attribute = params[:sort]
+    sort_order = params[:sort_order]
+    discount_amount = params[:discount]
+
+    if discount_amount
+      @products = @products.where("price < ?", discount_amount)
+    end
+
+    if sort_attribute && sort_order
+      @products = @products.order(sort_attribute => sort_order)
+    elsif sort_attribute
+      @products = @products.order(sort_attribute)
+    end
   end
 
   def new
@@ -19,7 +32,11 @@ class ProductsController < ApplicationController
   end
 
   def show
-    @product = Product.find(params[:id])
+    if params[:id] == "random"
+      @product = Product.all.sample
+    else
+      @product = Product.find(params[:id])
+    end
   end
 
   def edit
