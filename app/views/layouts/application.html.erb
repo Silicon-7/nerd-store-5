@@ -36,7 +36,14 @@
             <li><a href="/products?sort=price">Price: Lowest to Highest</a></li>
             <li><a href="/products?sort=price&sort_order=desc">Price: Highest to Lowest</a></li>
             <li><a href="/products?discount=100">Discount Items</a></li>
-            <li><a href="#">Link</a></li>
+            <li><a href="/products/random">Random Product</a></li>
+            <li class="divider"></li>
+
+              <%= form_tag "/products", method: :get do %>
+                <%= text_field_tag :search_term %>
+                <%= submit_tag "Search" %>
+              <% end %>
+
             <li class="divider"></li>
             <li><a href="#">Separated link</a></li>
           </ul>

@@ -4,6 +4,13 @@ class ProductsController < ApplicationController
     sort_attribute = params[:sort]
     sort_order = params[:sort_order]
     discount_amount = params[:discount]
+    search_term = params[:search_term]
+
+    if search_term
+      @products = @products.where("name iLIKE ? OR description iLIKE ?", 
+                                "%#{search_term}%",
+                                "%#{search_term}%")
+    end
 
     if discount_amount
       @products = @products.where("price < ?", discount_amount)
@@ -33,7 +40,8 @@ class ProductsController < ApplicationController
 
   def show
     if params[:id] == "random"
-      @product = Product.all.sample
+      product = Product.all.sample
+      redirect_to "/products/#{product.id}"
     else
       @product = Product.find(params[:id])
     end
@@ -64,4 +72,10 @@ class ProductsController < ApplicationController
     redirect_to "/"
   end
 end
+
+
+
+
+
+
 
