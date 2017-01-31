@@ -30,8 +30,8 @@ class ProductsController < ApplicationController
     @product = Product.new(
                            name: params[:name],
                            description: params[:description],
-                           image: params[:image],
-                           price: params[:price]
+                           price: params[:price],
+                           supplier_id: params[:supplier][:supplier_id]
                            )
     @product.save
     flash[:success] = "Product Created"
@@ -56,8 +56,8 @@ class ProductsController < ApplicationController
     @product.assign_attributes(
                                name: params[:name],
                                description: params[:description],
-                               image: params[:image],
-                               price: params[:price]
+                               price: params[:price],
+                               supplier_id: params[:supplier][:supplier_id]
                                )
     @product.save
     flash[:success] = "Product Updated"
