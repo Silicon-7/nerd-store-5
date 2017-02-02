@@ -38,14 +38,25 @@
             <li><a href="/products?discount=100">Discount Items</a></li>
             <li><a href="/products/random">Random Product</a></li>
             <li class="divider"></li>
-
+            <div class="row">
+            </div>
+            <!-- <li><a href="#" style="pointer-events: none; cursor: default;"> -->
               <%= form_tag "/products", method: :get do %>
-                <%= text_field_tag :search_term %>
-                <%= submit_tag "Search" %>
+                <%= text_field_tag :search_term, nil, class: "col-md-7 col-md-offset-1" %>
+                <%= submit_tag "Go", class: "col-md-3" %>
               <% end %>
+            <!-- </a></li> -->
 
             <li class="divider"></li>
-            <li><a href="#">Separated link</a></li>
+            <% if current_user %>
+              <li><a><%= current_user.email %></a></li>
+              <li><a href="/logout">Logout</a></li>
+            <% else %>
+              <li><a href="/signup">Sign Up</a></li>
+              <li><a href="/login">Log In</a></li>
+            <% end %>
+            <li class="divider"></li>
+            <li><a href="#">Other</a></li>
           </ul>
         </li>
       </ul>

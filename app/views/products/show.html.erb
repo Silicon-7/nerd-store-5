@@ -19,6 +19,13 @@
             <% end %>
             
             <p>Description: <%= @product.description %></p>
+
+            <%= form_tag "/orders", method: :post do %>
+              <%= label_tag :quantity %>
+              <%= text_field_tag :quantity %>
+              <%= hidden_field_tag :product_id, @product.id %>
+              <%= submit_tag "Buy Now!", class: "btn btn-default" %>
+            <% end %>
             
             <p>Supplier Name: <%= @product.supplier.name %></p>
             
