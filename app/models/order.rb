@@ -13,4 +13,10 @@ class Order < ApplicationRecord
   def calculate_total
     self.total = subtotal + tax
   end
+
+  def calculate_all_totals
+    calculate_subtotal
+    calculate_tax
+    calculate_total
+  end
 end
