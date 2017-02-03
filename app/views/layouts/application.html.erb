@@ -38,6 +38,12 @@
             <li><a href="/products?discount=100">Discount Items</a></li>
             <li><a href="/products/random">Random Product</a></li>
             <li class="divider"></li>
+            
+            <% Category.all.each do |category| %>
+              <li><a href="/products?category=<%= category.name %>"><%= category.name %> Items</a></li>
+            <% end %>
+
+            <li class="divider"></li>
             <div class="row">
             </div>
             <!-- <li><a href="#" style="pointer-events: none; cursor: default;"> -->
