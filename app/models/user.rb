@@ -3,6 +3,15 @@ class User < ApplicationRecord
   has_many :orders
   has_secure_password
 
+
+# bonus: email: format of an email (use regex)
+
+validates :email, uniqueness: true
+validates :email, presence: true
+validates :email, format: { with: /\w{2,}\@\w+\.\w{2,3}/, message: "only allows valid emails" }
+validates :name, presence: true
+validates :name, length: {minimum: 2}
+
   def cart
     carted_products.where(status: 'carted')
   end

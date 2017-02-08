@@ -1,4 +1,6 @@
 class ProductsController < ApplicationController
+  before_action :authenticate_admin!, except: [:index, :show]
+
   def index
     @products = Product.all
     sort_attribute = params[:sort]
@@ -30,9 +32,7 @@ class ProductsController < ApplicationController
   end
 
   def new
-    unless current_user && current_user.admin
-      redirect_to '/'
-    end
+    @product = Product.new
   end
 
   def create
@@ -42,9 +42,12 @@ class ProductsController < ApplicationController
                            price: params[:price],
                            supplier_id: params[:supplier][:supplier_id]
                            )
-    @product.save
-    flash[:success] = "Product Created"
-    redirect_to "/products/#{@product.id}"
+    if @product.save
+      flash[:success] = "Product Created"
+      redirect_to "/products/#{@product.id}"
+    else
+      render :new
+    end
   end
 
   def show
