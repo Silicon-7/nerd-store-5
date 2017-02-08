@@ -1,15 +1,10 @@
 class OrdersController < ApplicationController
   def create
-    order = Order.new(
-                       user_id: current_user.id,
-                       product_id: params[:product_id],
-                       quantity: params[:quantity])
+    carted_products = current_user.cart
+    order = Order.create(user_id: current_user.id)
+    carted_products.update_all(status: 'purchased', order_id: order.id)
+    order.calculate_totals
 
-    order.calculate_subtotal
-    order.calculate_tax
-    order.calculate_total
-    
-    order.save
     redirect_to "/orders/#{order.id}"
   end
 

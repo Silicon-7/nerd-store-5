@@ -1,0 +1,7 @@
+<h1>Checkout Page</h1>
+
+<% @carted_products.each do |carted_product| %>
+  <h4><%= carted_product.product.name %> - <%= carted_product.quantity %> x <%= number_to_currency(carted_product.product.price) %> - <%= link_to "remove", "/carted_products/#{carted_product.id}", method: :delete %></h4>
+<% end %>
+
+<%= link_to "Buy Now!", "/orders", method: :post, class: "btn btn-danger"%>
