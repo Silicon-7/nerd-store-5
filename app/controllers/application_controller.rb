@@ -14,6 +14,6 @@ class ApplicationController < ActionController::Base
 
 private
   def calculate_cart_count
-    @cart_count = current_user.cart.length
+    @cart_count = current_user.cart.length if current_user
   end
 end
