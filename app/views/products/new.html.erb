@@ -17,17 +17,17 @@
               
               <div>
                 <%= label_tag :price %>
-                <%= text_field_tag :price %>
+                <%= text_field_tag :price, @product.price %>
               </div>
               
               <div>
                 <%= label_tag :supplier %>
-                <%= collection_select :supplier, :supplier_id, Supplier.all, :id, :name %>
+                <%= collection_select :supplier, :supplier_id, Supplier.all, :id, :name, selected: @product.supplier_id %>
               </div>
               
               <div>
                 <%= label_tag :description %>
-                <%= text_area_tag :description, nil, size: "25x10" %>
+                <%= text_area_tag :description, @product.description, size: "25x10" %>
               </div>
 
               <%= submit_tag "Process New Nerdiness" %>

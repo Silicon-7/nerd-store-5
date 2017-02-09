@@ -1,3 +1,7 @@
+<% @product.errors.full_messages.each do |error| %>
+  <h4 style="color: white;"><%= error %></h4>
+<% end %>
+
 <section>
   <div class="row">
     <div class="col-sm-8 col-sm-offset-2">
@@ -17,8 +21,8 @@
           </div>
           
           <div>
-            <%= label_tag :image %>
-            <%= text_field_tag :image, @product.image %>
+            <%= label_tag :supplier %>
+            <%= collection_select :supplier, :supplier_id, Supplier.all, :id, :name, selected: @product.supplier_id %>
           </div>
           
           <div>

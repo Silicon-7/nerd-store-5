@@ -71,9 +71,12 @@ class ProductsController < ApplicationController
                                price: params[:price],
                                supplier_id: params[:supplier][:supplier_id]
                                )
-    @product.save
-    flash[:success] = "Product Updated"
-    redirect_to "/products/#{@product.id}"
+    if @product.save
+      flash[:success] = "Product Updated"
+      redirect_to "/products/#{@product.id}"
+    else
+      render :edit
+    end
   end
 
   def destroy
