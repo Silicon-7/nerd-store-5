@@ -9,7 +9,7 @@ class Product < ActiveRecord::Base
   validates :name, presence: true
   validates :price, presence: true
   validates :description, presence: true
-  validates :description, length: {in: 200..500}
+  validates :description, length: {in: 20..500}
 
   def price_as_integer
     price.to_i

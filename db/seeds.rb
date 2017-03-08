@@ -1,12 +1,12 @@
-User.create!([
-  {name: "Joe Nobody", email: "joe@gmail.com", password: "password", password_confirmation: "password"},
-  {name: "No Lynn Wednesday", email: "lynn@gmail.com", password: "password", password_confirmation: "password"}
-])
-Supplier.create!([
-  {name: "Billy Bob's House of Novilites", email: "bbob@gmail.com", phone: "(312) 555-9991"},
-  {name: "Emporium of Brick-a-brack", email: "orders@brickabrack.com", phone: "(312) 555-1119"},
-  {name: "Dave on clark and Franklin", email: "hammer.time@aol.com", phone: "(312) 555-5555"}
-])
+# User.create!([
+#   {name: "Joe Nobody", email: "joe@gmail.com", password: "password", password_confirmation: "password"},
+#   {name: "No Lynn Wednesday", email: "lynn@gmail.com", password: "password", password_confirmation: "password"}
+# ])
+# Supplier.create!([
+#   {name: "Billy Bob's House of Novilites", email: "bbob@gmail.com", phone: "(312) 555-9991"},
+#   {name: "Emporium of Brick-a-brack", email: "orders@brickabrack.com", phone: "(312) 555-1119"},
+#   {name: "Dave on clark and Franklin", email: "hammer.time@aol.com", phone: "(312) 555-5555"}
+# ])
 Product.create!([
   {name: "Sonic Screwdriver", price: "8.99", description: "The Doctor's sciencey magic wand to get out of tight spots. Note: does not work on wood", supplier_id: 3},
   {name: "Lightsaber", price: "270.1", description: "Part laser, part samuri sword, all awesome. The lightsaber is an elogant weapon for a more civilized age, not nearly as clumsy as a blaster", supplier_id: 2},
